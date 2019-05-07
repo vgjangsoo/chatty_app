@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable quotes */
 import React, { Component } from "react";
 
 class ChatBar extends Component {
   render() {
-      
+
     // Get currentUser value from parent and check if username is present.
     let currentUser =
       this.props.currentUser.name.length === 0

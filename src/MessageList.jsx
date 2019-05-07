@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable quotes */
 import React, { Component } from "react";
 import Message from "./Message.jsx";
 
