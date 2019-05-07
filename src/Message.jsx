@@ -1,15 +1,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable quotes */
-import React from "react";
+import React, { Component } from "react";
 
-const Message = ({ message }) => {
-    
-  return (
-    <div className="message">
-      <span className="message-username">{message.username}</span>
-      <span className="message-content">{message.content}</span>
-    </div>
-  );
-};
+class Message extends Component {
+  render() {
+    return (
+      <div className="message">
+        <span className="message-username">{this.props.message.username}</span>
+        <span className="message-content">{this.props.message.content}</span>
+      </div>
+    );
+  }
+}
 
 export default Message;

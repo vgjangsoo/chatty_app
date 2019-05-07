@@ -4,7 +4,7 @@ import React, { Component } from "react";
 
 class ChatBar extends Component {
   render() {
-      
+
     // Get currentUser value from parent and check if username is present.
     let currentUser =
       this.props.currentUser.name.length === 0
@@ -13,8 +13,12 @@ class ChatBar extends Component {
 
     // Create a function to get the input values from input field.
     const onEnter = evt => {
+
+        // If user presses enter.
       if (evt.key === "Enter") {
         const inputElement = evt.target;
+
+        // Create an obj with the data.
         let obj = {
           username: currentUser,
           content: evt.target.value,
@@ -22,6 +26,8 @@ class ChatBar extends Component {
             .toString()
             .substr(3, 6)
         };
+        
+        // addNewMessage function! from parent APP.jsx
         this.props.addNewMessage(obj);
 
         // Reset input element.
