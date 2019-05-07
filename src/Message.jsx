@@ -1,17 +1,12 @@
-import React, {Component} from 'react';
+import React from "react";
 
-const Message = ({message}) => {
-    return message.type === "incomingMessage" ?
-    (
+const Message = ({ message }) => {
+  return (
     <div className="message">
-        <span className="message-username">{message.username}</span>
-        <span className="message-content">{message.content}</span>
+      <span className="message-username">{message.username}</span>
+      <span className="message-content">{message.content}</span>
     </div>
-    ) : (
-    <div className="message system">
-        {message.content}
-    </div>
-    )
-}
+  );
+};
 
 export default Message;
