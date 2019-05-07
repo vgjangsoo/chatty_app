@@ -7,12 +7,16 @@ const messageData = {
   currentUser: { name: "Bob" }, // optional. if currentUser is not defined, it means the user is Anonymous
   messages: [
     {
-      id: Math.random().toString().substr(3, 6),
+      id: Math.random()
+        .toString()
+        .substr(3, 6),
       username: "Bob",
       content: "Has anyone seen my marbles?"
     },
     {
-      id: Math.random().toString().substr(3, 6),
+      id: Math.random()
+        .toString()
+        .substr(3, 6),
       username: "Anonymous",
       content:
         "No, I think you lost them. You lost your marbles Bob. You lost them for good."
@@ -49,7 +53,9 @@ class App extends Component {
 
       // Add a new message to the list of messages in the data store
       const newMessage = {
-        id: Math.random().toString().substr(3, 6),
+        id: Math.random()
+          .toString()
+          .substr(3, 6),
         username: "Michelle",
         content: "Hello there!"
       };
