@@ -5,7 +5,7 @@ import React, { Component } from "react";
 class ChatBar extends Component {
   render() {
 
-    // Get currentUser value from parent and check if username is present.
+    // Get currentUser value from parent and check if username is present if not username becomes Anonymous.
     let currentUser =
       this.props.currentUser.name.length === 0
         ? "Anonymous"
@@ -26,11 +26,11 @@ class ChatBar extends Component {
             .toString()
             .substr(3, 6)
         };
-        
+
         // addNewMessage function! from parent APP.jsx
         this.props.addNewMessage(obj);
 
-        // Reset input element.
+        // Reset input-field.
         inputElement.value = "";
       }
     };

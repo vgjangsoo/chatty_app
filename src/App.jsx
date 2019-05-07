@@ -44,11 +44,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // eslint-disable-next-line no-console
     console.log("componentDidMount <App />");
 
     setTimeout(() => {
-      // eslint-disable-next-line no-console
       console.log("Simulating incoming message");
 
       // Add a new message to the list of messages in the data store
