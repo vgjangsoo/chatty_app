@@ -14,11 +14,16 @@ class ChatBar extends Component {
     // Create a function to get the input values from input field.
     const onEnter = evt => {
       if (evt.key === "Enter") {
+          const inputElement = evt.target;
         let obj = {
           username: currentUser,
-          content: evt.target.value
+          content: evt.target.value,
+          id: Math.random().toString().substr(3, 6)
         };
         this.props.addNewMessage(obj);
+        
+        // Reset input element.
+        inputElement.value = "";
       }
     };
 

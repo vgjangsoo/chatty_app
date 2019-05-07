@@ -3,6 +3,7 @@
 import React from "react";
 
 const Message = ({ message }) => {
+    
   return (
     <div className="message">
       <span className="message-username">{message.username}</span>
