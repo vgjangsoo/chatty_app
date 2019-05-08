@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable quotes */
-import React, { Component } from "react";
+
+import React, { Component } from 'react';
 
 class Message extends Component {
   render() {

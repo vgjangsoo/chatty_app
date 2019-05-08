@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable quotes */
-import React, { Component } from "react";
-import Message from "./Message.jsx";
+
+import React, { Component } from 'react';
+import Message from './Message.jsx';
 
 class MessageList extends Component {
   render() {
