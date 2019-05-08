@@ -38,13 +38,15 @@ class ChatBar extends Component {
       // When the user presses enter key.
       if (evt.key === 'Enter') {
         // Create an obj with the new user name.
-        let userName = {
-          name: evt.target.value
+        let userNameObj = {
+          currentUser: {
+            name: evt.target.value
+          }
         };
 
         // Change current user name by using changeCurrentUser function from parent: APP.jsx
-        this.props.changeCurrentUser(userName);
-
+        this.props.changeCurrentUser(userNameObj);
+        
         //Reset username input-field.
         evt.target.value = '';
       }

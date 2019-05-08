@@ -14,7 +14,9 @@ class App extends Component {
 
     // Set initial state
     this.state = {
+      type: '',
       currentUser: { name: '' },
+      username: '',
       messages: [],
       id: uuidv4()
     };
@@ -37,41 +39,21 @@ class App extends Component {
   }
 
   changeCurrentUser(newUserName) {
-    this.setState({ currentUser: newUserName } );  
+    this.setState({ currentUser: newUserName.currentUser });
   }
 
   componentDidMount() {
     console.log('componentDidMount <App />');
 
     socket.onopen = () => {
-      console.log('Client connected');
+      console.log('Connected to server');
     };
 
     socket.onmessage = event => {
       const serverData = JSON.parse(event.data);
-      console.log(serverData);
+
       this.addToPage(serverData);
     };
-
-    setTimeout(() => {
-      console.log('Simulating incoming message');
-
-      // Add a new message to the list of messages in the data store
-      const newMessage = {
-        id: Math.random()
-          .toString()
-          .substr(3, 6),
-        username: 'Michelle',
-        content: 'Hello there!'
-      };
-
-      const messages = this.state.messages.concat(newMessage);
-
-      // Update the state of the app component.
-      // Calling setState will trigger a call to render() in App and all child components.
-
-      this.setState({ messages: messages });
-    }, 3000);
   }
 
   render() {
