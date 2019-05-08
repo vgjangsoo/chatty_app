@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
-
 import React, { Component } from 'react';
+
+// uuid random.
+const uuidv4 = require('uuid/v4');
 
 class ChatBar extends Component {
   render() {
@@ -21,9 +23,7 @@ class ChatBar extends Component {
         let obj = {
           username: currentUser,
           content: evt.target.value,
-          id: Math.random()
-            .toString()
-            .substr(3, 6)
+          id: uuidv4()
         };
 
         // addNewMessage function! from parent APP.jsx

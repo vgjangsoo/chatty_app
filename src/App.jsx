@@ -5,6 +5,9 @@ import MessageList from './MessageList.jsx';
 // WebSocket connection.
 const socket = new WebSocket('ws://localhost:3001');
 
+// uuid random.
+const uuidv4 = require('uuid/v4');
+
 // const messageData = {
 //   currentUser: { name: 'Bob' }, // optional. if currentUser is not defined, it means the user is Anonymous
 //   messages: [
@@ -33,24 +36,39 @@ class App extends Component {
     // Set initial state
     this.state = {
       currentUser: { name: 'Bob' },
-      messages: []
+      messages: [],
+      id: uuidv4()
     };
+    // bind!
     this.addNewMessage = this.addNewMessage.bind(this);
+  }
+
+  // A function to add new messages to the message list.
+  addToPage(content) {
+    const oldMessages = this.state.messages;
+    const newMessages = [...oldMessages, content];
+    this.setState({ messages: newMessages });
   }
 
   // A function to add new messages from chatbar input field.
   addNewMessage(content) {
-    const oldMessages = this.state.messages;
-    const newMessages = [...oldMessages, content];
-    this.setState({ messages: newMessages });
+    // Socket send by using JSON stringify.
     socket.send(JSON.stringify(content));
   }
 
   componentDidMount() {
     console.log('componentDidMount <App />');
+
     socket.onopen = () => {
       console.log('Client connected');
     };
+
+    socket.onmessage = event => {
+      const serverData = JSON.parse(event.data);
+      console.log(serverData);
+      this.addToPage(serverData);
+    };
+
     setTimeout(() => {
       console.log('Simulating incoming message');
 
