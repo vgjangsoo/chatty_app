@@ -35,12 +35,13 @@ class App extends Component {
 
     // Set initial state
     this.state = {
-      currentUser: { name: 'Bob' },
+      currentUser: { name: '' },
       messages: [],
       id: uuidv4()
     };
     // bind!
     this.addNewMessage = this.addNewMessage.bind(this);
+    this.changeCurrentUser = this.changeCurrentUser.bind(this);
   }
 
   // A function to add new messages to the message list.
@@ -54,6 +55,11 @@ class App extends Component {
   addNewMessage(content) {
     // Socket send by using JSON stringify.
     socket.send(JSON.stringify(content));
+  }
+
+  changeCurrentUser(newUserName) {
+    this.setState({ currentUser: newUserName } );
+    console.log('From App ', newUserName);
   }
 
   componentDidMount() {
@@ -104,6 +110,7 @@ class App extends Component {
         <ChatBar
           currentUser={this.state.currentUser}
           addNewMessage={this.addNewMessage}
+          changeCurrentUser={this.changeCurrentUser}
         />
       </div>
     );
