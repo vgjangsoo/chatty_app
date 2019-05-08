@@ -8,27 +8,6 @@ const socket = new WebSocket('ws://localhost:3001');
 // uuid random.
 const uuidv4 = require('uuid/v4');
 
-// const messageData = {
-//   currentUser: { name: 'Bob' }, // optional. if currentUser is not defined, it means the user is Anonymous
-//   messages: [
-//     {
-//       id: Math.random()
-//         .toString()
-//         .substr(3, 6),
-//       username: 'Bob',
-//       content: 'Has anyone seen my marbles?'
-//     },
-//     {
-//       id: Math.random()
-//         .toString()
-//         .substr(3, 6),
-//       username: 'Anonymous',
-//       content:
-//         'No, I think you lost them. You lost your marbles Bob. You lost them for good.'
-//     }
-//   ]
-// };
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -58,8 +37,7 @@ class App extends Component {
   }
 
   changeCurrentUser(newUserName) {
-    this.setState({ currentUser: newUserName } );
-    console.log('From App ', newUserName);
+    this.setState({ currentUser: newUserName } );  
   }
 
   componentDidMount() {
