@@ -30,8 +30,18 @@ Install the dependencies and start the server.
 ```
 npm install
 npm start
-open http://localhost:3000
 ```
+
+
+Start the second server.
+
+```
+cd to `chatty_server`
+npm install
+npm start
+```
+
+Go to http://localhost:3000 in your browser to start using the app. 😍
 
 ### Linting
 
