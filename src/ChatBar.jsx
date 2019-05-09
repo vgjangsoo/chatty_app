@@ -22,7 +22,8 @@ class ChatBar extends Component {
         let obj = {
           username: currentUser,
           content: inputElement.value,
-          id: uuidv4()
+          id: uuidv4(),
+          type: 'postMessage'
         };
 
         // addNewMessage function! from parent APP.jsx
@@ -41,12 +42,18 @@ class ChatBar extends Component {
         let userNameObj = {
           currentUser: {
             name: evt.target.value
-          }
+          },
+          type: 'postNotification',
+          id: uuidv4(),
+          prevUserName:
+            this.props.currentUser.name.length === 0
+              ? 'Anonymous'
+              : this.props.currentUser.name
         };
 
         // Change current user name by using changeCurrentUser function from parent: APP.jsx
         this.props.changeCurrentUser(userNameObj);
-        
+
         //Reset username input-field.
         evt.target.value = '';
       }

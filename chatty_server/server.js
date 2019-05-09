@@ -36,8 +36,17 @@ wss.on('connection', ws => {
     // .parse JSON file.
     const recievedMsg = JSON.parse(message);
 
-    // Console log username and message content.
-    console.log(`User ${recievedMsg.username} said ${recievedMsg.content}`);
+    if (recievedMsg.type === 'postNotification') {
+      console.log(
+        `User "${recievedMsg.prevUserName}" has changed their name to "${
+          recievedMsg.currentUser.name
+        }"`
+      );
+    } else if (recievedMsg.type === 'postMessage') {
+      // Console log username and message content.
+      console.log(`User ${recievedMsg.username} said ${recievedMsg.content}`);
+    }
+
     wss.broadcast(message);
   });
 

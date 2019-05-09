@@ -40,6 +40,8 @@ class App extends Component {
 
   changeCurrentUser(newUserName) {
     this.setState({ currentUser: newUserName.currentUser });
+    // console.log(newUserName);
+    socket.send(JSON.stringify(newUserName));
   }
 
   componentDidMount() {
@@ -52,6 +54,17 @@ class App extends Component {
     socket.onmessage = event => {
       const serverData = JSON.parse(event.data);
 
+      // Change the type of the data.
+      switch (serverData.type) {
+        case 'postNotification':
+          this.setState({ type: 'incomingNotification' });
+          break;
+        case 'postMessage':
+          this.setState({ type: 'incomingMessage' });
+          break;
+        default:
+          throw new Error('Unknown event type ' + data.type);
+      }
       this.addToPage(serverData);
     };
   }
