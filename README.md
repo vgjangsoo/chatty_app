@@ -18,8 +18,8 @@ clone this repository, as well as chattty-app-server
 Install the dependencies and start for both chatty-app and chattty-app-server.
 
 ```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
+git clone git@github.com:vgjangsoo/chatty_app.git
+cd chatty_app
 git remote rm origin
 git remote add origin [YOUR NEW REPOSITORY]
 # Manually update your package.json file
@@ -32,7 +32,6 @@ npm install
 npm start
 ```
 
-
 Start the second server.
 
 ```
@@ -43,9 +42,10 @@ npm start
 
 Go to http://localhost:3000 in your browser to start using the app. 😍
 
+
 ### Linting
 
-This boilerplate project includes React ESLint configuration.
+This project includes React ESLint configuration.
 
 ```
 npm run lint
