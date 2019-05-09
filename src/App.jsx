@@ -63,7 +63,7 @@ class App extends Component {
           this.setState({ type: 'incomingMessage' });
           break;
         default:
-          throw new Error('Unknown event type ' + data.type);
+          throw new Error('Unknown event type ' + serverData.type);
       }
       this.addToPage(serverData);
     };
