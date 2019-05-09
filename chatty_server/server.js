@@ -6,6 +6,9 @@ const WebSocket = require('ws');
 // Set the port to 3001
 const PORT = 3001;
 
+// uuid random.
+const uuidv4 = require('uuid/v4');
+
 // Create a new express server
 const server = express()
   // Make the express server serve static assets (html, javascript, css) from the /public folder
@@ -32,11 +35,20 @@ wss.broadcast = function broadcast(data) {
 wss.on('connection', ws => {
   console.log('Client connected');
 
+  let clientsCount = {
+    counter: wss.clients.size,
+    type: 'counter',
+    id: uuidv4()
+  };
+
+  wss.broadcast(JSON.stringify(clientsCount));
+
   ws.on('message', function incoming(message) {
     // .parse JSON file.
     const recievedMsg = JSON.parse(message);
 
     if (recievedMsg.type === 'postNotification') {
+      // Console log user's previous name and recent name.
       console.log(
         `User "${recievedMsg.prevUserName}" has changed their name to "${
           recievedMsg.currentUser.name
@@ -51,5 +63,15 @@ wss.on('connection', ws => {
   });
 
   // Set up a callback for when a client closes the socket. This usually means they closed their browser.
-  ws.on('close', () => console.log('Client disconnected'));
+  ws.on('close', () => {
+    let clientsCount = {
+      counter: wss.clients.size,
+      type: 'counter',
+      id: uuidv4()
+    };
+
+    wss.broadcast(JSON.stringify(clientsCount));
+
+    console.log('Client disconnected')
+  });
 });

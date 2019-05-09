@@ -18,6 +18,7 @@ class App extends Component {
       currentUser: { name: '' },
       username: '',
       messages: [],
+      counter: 0,
       id: uuidv4()
     };
     // bind!
@@ -38,9 +39,9 @@ class App extends Component {
     socket.send(JSON.stringify(content));
   }
 
+  // Users can change their name.
   changeCurrentUser(newUserName) {
     this.setState({ currentUser: newUserName.currentUser });
-    // console.log(newUserName);
     socket.send(JSON.stringify(newUserName));
   }
 
@@ -62,6 +63,9 @@ class App extends Component {
         case 'postMessage':
           this.setState({ type: 'incomingMessage' });
           break;
+        case 'counter':
+          this.setState({ counter: serverData.counter});
+          break;
         default:
           throw new Error('Unknown event type ' + serverData.type);
       }
@@ -76,6 +80,7 @@ class App extends Component {
           <a href="/" className="navbar-brand">
             Chatty
           </a>
+          <a className="navbar-counter">{this.state.counter} {(this.state.counter > 1) ? 'Users' : 'User'} online</a>
         </nav>
         <main className="messages">
           <MessageList messages={this.state.messages} />
