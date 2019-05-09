@@ -17,7 +17,7 @@ class App extends Component {
     const letters = '0123456789ABCDEF';
     let userColor = '#';
     for (let i = 0; i < 6; i++) {
-      userColor += letters[(Math.floor(Math.random() * 16))];
+      userColor += letters[Math.floor(Math.random() * 16)];
     }
 
     // Set initial state
@@ -30,7 +30,7 @@ class App extends Component {
       id: uuidv4(),
       color: userColor
     };
-    
+
     // bind!
     this.addNewMessage = this.addNewMessage.bind(this);
     this.changeCurrentUser = this.changeCurrentUser.bind(this);
@@ -74,13 +74,17 @@ class App extends Component {
           this.setState({ type: 'incomingMessage' });
           break;
         case 'counter':
-          this.setState({ counter: serverData.counter});
+          this.setState({ counter: serverData.counter });
           break;
         default:
           throw new Error('Unknown event type ' + serverData.type);
       }
       this.addToPage(serverData);
     };
+  }
+
+  componentDidUpdate() {
+    window.scrollTo(0, document.body.scrollHeight);
   }
 
   render() {
@@ -90,7 +94,10 @@ class App extends Component {
           <a href="/" className="navbar-brand">
             Chatty
           </a>
-          <a className="navbar-counter">{this.state.counter} {(this.state.counter > 1) ? 'Users' : 'User'} online</a>
+          <a className="navbar-counter">
+            {this.state.counter} {this.state.counter > 1 ? 'Users' : 'User'}{' '}
+            online
+          </a>
         </nav>
         <main className="messages">
           <MessageList messages={this.state.messages} />

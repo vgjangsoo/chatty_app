@@ -72,6 +72,6 @@ wss.on('connection', ws => {
 
     wss.broadcast(JSON.stringify(clientsCount));
 
-    console.log('Client disconnected')
+    console.log('Client disconnected');
   });
 });

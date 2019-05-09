@@ -7,7 +7,10 @@ class Message extends Component {
     // Each user will have different color. Color stays the same even if the user changes his/her username.
     let userNameColor = {
       color: this.props.message.color
-    }
+    };
+
+    const regex = /^((https?|ftp):)?\/\/.*(jpeg|jpg|png|gif|bmp)$/;
+
     // If the data type is post notification.
     if (this.props.message.type === 'postNotification') {
       return (
@@ -20,10 +23,23 @@ class Message extends Component {
       );
     }
 
+    if (regex.test(this.props.message.content)) {
+      return (
+        <div className="message">
+          <span className="message-username" style={userNameColor}>
+            {this.props.message.username}
+          </span>
+          <img src={this.props.message.content} />
+        </div>
+      );
+    }
+
     // Else.
     return (
       <div className="message">
-        <span className="message-username" style={userNameColor}>{this.props.message.username}</span>
+        <span className="message-username" style={userNameColor}>
+          {this.props.message.username}
+        </span>
         <span className="message-content">{this.props.message.content}</span>
       </div>
     );
