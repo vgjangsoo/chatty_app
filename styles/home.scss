@@ -14,19 +14,22 @@ body {
 }
 
 .chatbar {
-  background: tomato;
-  border-top: 1px solid black;
+  background: #9fdff6;
+  border-top: 1px solid #476470;
   bottom: 0;
   display: flex;
   left: 0;
   padding: 5px;
   position: fixed;
   right: 0;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
 }
 
 .chatbar-message,
 .chatbar-username {
-  border: 1px solid black;
+  border: 1px solid #476470;
+  border-radius: 8px;
   display: block;
   height: 40px;
   line-height: 40px;
@@ -69,14 +72,16 @@ body {
 }
 
 .navbar {
-  background: tomato;
-  border-bottom: 1px solid black;
+  background: #9fdff6;
+  border-bottom: 1px solid #476470;
   height: 60px;
   left: 0;
   padding: 0 10px;
   position: fixed;
   right: 0;
   top: 0;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 .navbar-brand {
@@ -95,7 +100,7 @@ body {
   float: right;
   display: block;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   height: 60px;
   line-height: 60px;
   padding: 0 10px;

@@ -92,7 +92,7 @@ class App extends Component {
       <div>
         <nav className="navbar">
           <a href="/" className="navbar-brand">
-            Chatty
+            <i className="fas fa-comment-dollar" /> Chatty 
           </a>
           <a className="navbar-counter">
             {this.state.counter} {this.state.counter > 1 ? 'Users' : 'User'}{' '}
