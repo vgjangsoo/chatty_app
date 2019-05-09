@@ -6,19 +6,10 @@ Chatty allows users to communicate with each other without having to register ac
 ## Screent Shots
 
 ### Main Page
-!["Sreenshot of main page"]()
+!["Sreenshot of main page"](https://github.com/vgjangsoo/chatty_app/blob/master/docs/main%20page.png?raw=true)
 
 ---------------------------------
 
-### Edit Page
-!["Sreenshot of compose box"]()
-
-----------------------------------
-
-### myURL page
-!["Sreenshot of error message"]()
-
----------------------------------
 
 ### Usage
 
