@@ -12,6 +12,14 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    // Create random Hex clolor code.
+    // Storing all letter and digit combinations.
+    const letters = '0123456789ABCDEF';
+    let userColor = '#';
+    for (let i = 0; i < 6; i++) {
+      userColor += letters[(Math.floor(Math.random() * 16))];
+    }
+
     // Set initial state
     this.state = {
       type: '',
@@ -19,8 +27,10 @@ class App extends Component {
       username: '',
       messages: [],
       counter: 0,
-      id: uuidv4()
+      id: uuidv4(),
+      color: userColor
     };
+    
     // bind!
     this.addNewMessage = this.addNewMessage.bind(this);
     this.changeCurrentUser = this.changeCurrentUser.bind(this);

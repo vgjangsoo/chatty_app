@@ -4,6 +4,14 @@ import React, { Component } from 'react';
 // uuid random.
 const uuidv4 = require('uuid/v4');
 
+// Create random Hex clolor code.
+// Storing all letter and digit combinations.
+const letters = '0123456789ABCDEF';
+let userColor = '#';
+for (let i = 0; i < 6; i++) {
+  userColor += letters[Math.floor(Math.random() * 16)];
+}
+
 class ChatBar extends Component {
   render() {
     // Get currentUser value from parent and check if username is present if not username becomes Anonymous.
@@ -23,7 +31,8 @@ class ChatBar extends Component {
           username: currentUser,
           content: inputElement.value,
           id: uuidv4(),
-          type: 'postMessage'
+          type: 'postMessage',
+          color: userColor
         };
 
         // addNewMessage function! from parent APP.jsx

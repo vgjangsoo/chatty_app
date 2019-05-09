@@ -4,6 +4,10 @@ import React, { Component } from 'react';
 
 class Message extends Component {
   render() {
+    // Each user will have different color. Color stays the same even if the user changes his/her username.
+    let userNameColor = {
+      color: this.props.message.color
+    }
     // If the data type is post notification.
     if (this.props.message.type === 'postNotification') {
       return (
@@ -19,7 +23,7 @@ class Message extends Component {
     // Else.
     return (
       <div className="message">
-        <span className="message-username">{this.props.message.username}</span>
+        <span className="message-username" style={userNameColor}>{this.props.message.username}</span>
         <span className="message-content">{this.props.message.content}</span>
       </div>
     );
